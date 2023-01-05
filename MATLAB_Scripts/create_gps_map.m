@@ -40,7 +40,7 @@ for gps_file_idx = 1:num_loops
     gps_filename            = string(gps_files(gps_file_idx).folder) + string(gps_files(gps_file_idx).name);
     
     % Grabbing the data from the file
-    [gps_header, gps_data]  = import_data_fun(gps_files(gps_file_idx).name);
+    [gps_header, gps_data]  = import_data(gps_files(gps_file_idx).name);
     
     gps_apphend_all = [gps_apphend_all; gps_data'];
     

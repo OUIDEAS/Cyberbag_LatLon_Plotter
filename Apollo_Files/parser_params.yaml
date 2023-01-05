@@ -1,0 +1,29 @@
+records:
+    filepath: /apollo/data/record_files/5158/
+    
+parse: gps
+# use one of the following options or add more:
+  # lidar
+  # radar
+  # camera
+  # gps
+
+lidar:     # for velodyne vls-128 lidar
+  channel_name: /apollo/sensor/lidar32/PointCloud2
+  out_folder_extn: _lidar_vls128
+  timestamp_file_extn: _lidar_vls128_timestamp.txt
+
+radar:     # for ARS-408 radar mounted in front
+  channel_name: /apollo/sensor/radar/front
+  out_folder_extn: _radar_conti408_front
+  timestamp_file_extn: _radar_conti408_front_timestamp.txt
+
+camera:   # for 6mm camera mounted in front
+  channel_name: /apollo/sensor/camera/front_6mm/image/compressed
+  out_folder_extn: _camera_6mm_front
+  timestamp_file_extn: _camera_6mm_front_timestamp.txt
+
+gps:      # For gps
+  channel_name: /apollo/sensor/gnss/best_pose  
+  out_folder_extn: _gps
+  timestamp_file_extn: _gps_timestamp.txt
