@@ -1,4 +1,4 @@
-# OU_Van_Apollo_GPS_Grab_n_Plot
+# Cyberbag_LatLon_Plotter
 
 Python scripts in the Apollo Files may directly replace files in the apollo directory [ROOT/apollo/modules/tools/record\_parse_save/] or be placed in a seperate directory.
 
@@ -6,10 +6,10 @@ Editing of the parser\_params.yaml indicate the directory with the cyber bags, w
 
 example usage:
 
-'''python record_parse_save```
-
 There are two MATLAB scripts:
 
 create\_gps\_map.m allows MATLAB to consecutively read each gps txt file and save the results as a csv to disk, as well as generate and save three plots.
 
 area\_marker.m allows the user to plot areas unto the map that coorespond to trouble areas the van encountered during it's drive. Areas and a plot may be saved to disk.
+
+![alt text]https://github.com/Arkenbrien/Cyberbag_LatLon_Plotter/example_image.png?raw=true)
