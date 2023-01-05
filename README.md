@@ -2,7 +2,7 @@
 
 Python scripts in the Apollo Files may directly replace files in the apollo directory:
 
-$ROOT$/apollo/modules/tools/record\_parse_save/
+ROOT/apollo/modules/tools/record\_parse_save/
 
 Editing of the parser\_params.yaml indicate the directory with the cyber bags, which is the same directory that record\_parse\_save will export gps files. Each message interpreted will generate a single .txt file.
 
