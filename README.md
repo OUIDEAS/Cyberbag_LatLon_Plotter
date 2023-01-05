@@ -12,4 +12,4 @@ create\_gps\_map.m allows MATLAB to consecutively read each gps txt file and sav
 
 area\_marker.m allows the user to plot areas unto the map that coorespond to trouble areas the van encountered during it's drive. Areas and a plot may be saved to disk.
 
-![alt text]https://github.com/Arkenbrien/Cyberbag_LatLon_Plotter/example_image.png?raw=true)
+![example_image](https://user-images.githubusercontent.com/64620392/210857412-ab001eb4-3da5-48ce-9fce-a36edd80ff9b.png)
