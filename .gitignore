@@ -1,1 +1,7 @@
 *.asv
+GPS_DATA/
+MATLAB_Scripts/Raw_Routes
+MATLAB_Scripts/Route_Export_Results
+MATLAB_Scripts/Route_Van_Comp_Img
+MATLAB_Scripts/Van_GPS_Export
+*.csv

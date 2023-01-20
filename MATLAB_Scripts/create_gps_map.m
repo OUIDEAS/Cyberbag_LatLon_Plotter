@@ -10,8 +10,8 @@ figure_size = [10 10 1200 800];
 
 %% Select the folder where all the gps data lives
 
-% import_folder = uigetdir('','Grab GPS Import Folder');
-import_folder = '/media/autobuntu/chonk/chonk/DATA/cyber_bags_gps_export/record_files_all_test';
+import_folder = uigetdir('','Grab GPS Import Folder');
+% import_folder = '/media/autobuntu/chonk/chonk/DATA/cyber_bags_gps_export/record_files_all_test';
 addpath(import_folder)
 
 gps_files = dir(fullfile(import_folder,'/*.txt'));
@@ -19,7 +19,7 @@ gps_files = dir(fullfile(import_folder,'/*.txt'));
 %% Select the export folder
 
 % export_folder = uigetdir('','Grab GPS Export Folder');
-export_folder = uigetdir('/media/autobuntu/chonk/chonk/DATA/cyber_bags_gps_export/','Grab GPS Export Folder');
+export_folder = uigetdir('/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Van_GPS_Export','Grab GPS Export Folder');
 
 if not(isfolder(export_folder))
     
@@ -62,7 +62,7 @@ gps_table = array2table(gps_apphend_all, 'VariableNames', gps_header);
 % Creating the filename
 [~,import_folder_name,~] = fileparts(import_folder);
 time_now = convertTo(datetime, 'epochtime');
-filename = string(export_folder) + '/' + string(import_folder_name) + '_' + string(time_now) + '.csv';
+filename = string(export_folder) + '/' + string(import_folder_name) + '_VAN_' + string(time_now) + '.csv';
 
 % Saving the table to disk
 writetable(gps_table, string(filename))
@@ -123,14 +123,14 @@ cbalt.Label.String = 'Elevation (m)';
 
 %% Save Figures
 
-saveas(route_figure, string(export_folder) + "/" + string(import_folder_name) + "_route_figure.png", 'png');
+saveas(route_figure, string(export_folder) + "/" + string(import_folder_name) + "_VAN_route_figure.png", 'png');
 saveas(route_figure, string(export_folder) + "/" + string(import_folder_name) + "_route_figure.fig", 'fig');
 
-saveas(alt_figure, string(export_folder) + "/" + string(import_folder_name) + "_alt_figure.png", 'png');
+saveas(alt_figure, string(export_folder) + "/" + string(import_folder_name) + "_VAN_alt_figure.png", 'png');
 saveas(alt_figure, string(export_folder) + "/" + string(import_folder_name) + "_alt_figure.fig", 'png');
 
-saveas(sat_figure, string(export_folder) + "/" + string(import_folder_name) + "_sat_figure.png", 'png');
-saveas(sat_figure, string(export_folder) + "/" + string(import_folder_name) + "_sat_figure.fig", 'fig');
+saveas(sat_figure, string(export_folder) + "/" + string(import_folder_name) + "_VAN_sat_figure.png", 'png');
+saveas(sat_figure, string(export_folder) + "/" + string(import_folder_name) + "_VAN_sat_figure.fig", 'fig');
 
 %% Distance Traveled
 

@@ -21,6 +21,7 @@ time_now = convertTo(datetime, 'epochtime');
 
 % Grab fig file
 [import_fig import_fig_path] = uigetfile();
+addpath(import_fig_path)
 % import_fig = '/media/autobuntu/chonk/chonk/DATA/cyber_bags_gps_export/record_files_all_test/record_files_all_test_route_figure.fig';
 
 % Open and display fig file
