@@ -50,6 +50,8 @@ geoplot(lat_van, lon_van, 'LineWidth', 3, 'Color', [0 0 1 0.75])
 hold off
 geobasemap 'none'
 
+legend({'Route', 'Sats', 'Van'}, 'FontSize', 14)
+
 
 % Initilizing the color
 RGB = [0 0 0]; 
