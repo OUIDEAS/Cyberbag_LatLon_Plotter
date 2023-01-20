@@ -38,6 +38,8 @@ geoplot(lat_van, lon_van, 'b', 'LineWidth', 3)
 hold off
 geobasemap 'none'
 
+legend({'Route', 'Van'}, 'FontSize', 14)
+
 %% Plot Results with Satellites
 
 route_fig = figure('DefaultAxesFontSize', 14); 
