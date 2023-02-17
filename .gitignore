@@ -5,3 +5,7 @@ MATLAB_Scripts/Route_Export_Results
 MATLAB_Scripts/Route_Van_Comp_Img
 MATLAB_Scripts/Van_GPS_Export
 *.csv
+MATLAB_Scripts/to_dr_wilhelm
+*.fig
+*.png
+*.zip

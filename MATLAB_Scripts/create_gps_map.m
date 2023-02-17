@@ -31,7 +31,7 @@ addpath(export_folder)
 
 %% Consecutively going through each gps file in the import folder
 
-f                       = waitbar(0,'1','Name','Grabbing dat GPS');
+f                       = waitbar(0,'0','Name','Grabbing dat GPS');
 num_loops               = length(gps_files);
 
 for gps_file_idx = 1:num_loops
@@ -77,14 +77,16 @@ sat = gps_apphend_all(:,20);
 %% Create Map
 
 route_figure = figure('Position', figure_size, 'DefaultAxesFontSize', 14); 
-geoscatter(lat,lon,75,'filled'); 
-geobasemap 'satellite'
+geoscatter(lat,lon,75,'filled', 'MarkerFaceColor', [1 0 0]); 
+hold on
+geoscatter(lat_auto,lon_auto,75,'filled', 'MarkerFaceColor', [0 0 1]); 
+% geobasemap streetsdark
 
 %% Create Map - With Satellites
 
 sat_figure = figure('Position', figure_size, 'DefaultAxesFontSize', 14); 
 geoscatter(lat,lon,75,sat,'filled'); 
-geobasemap 'satellite'
+% geobasemap streetsdark
 
 % Initilizing the color
 RGB = [0 0 0]; 

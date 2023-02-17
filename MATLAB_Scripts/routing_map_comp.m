@@ -3,24 +3,13 @@
 % This exports each node's gps coordinates 
 
 clear all
-% close all
+close all
 clc
-
-%% Options
-
-save_data = 0;
-save_png = 0;
-save_fig = 0;
-
-export_dir = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Route_Export_Results/ohio_ridges_v2';
-
-mkdir(export_dir)
-addpath(export_dir)
-
 
 %% Var Init
 
 lane_count  = 1;
+lane_count_2 = 1;
 
 x           = [];
 y           = [];
@@ -33,14 +22,18 @@ lon_all     = [];
 proj = projcrs(3724);
 % proj = projcrs();
 
-[~,export_name,~] = fileparts(export_dir);
+% [~,export_name,~] = fileparts(export_dir);
 
 %% Opening file and importing into workspace
 import_route = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_ridges_v1/routing_map.txt';
+import_route_2 = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_ridges_v2/routing_map.txt';
 
 routingmap = import_routing_map_txt(import_route);
+routingmap_2 = import_routing_map_txt(import_route_2);
+
 
 n = size(routingmap);
+m = size(routingmap_2);
 
 %% Scanning for data
 
@@ -76,22 +69,44 @@ for line = 1:1:n(1)
     
 end
 
-%% Plots all segments
-% 
-% for seg_idx = 2:1:length(segment_latlon)
-% 
-%     lat_all = [lat_all; segment_latlon{seg_idx}(:,1)];
-%     lon_all = [lon_all; segment_latlon{seg_idx}(:,2)];
-%     
-% end
-% 
-% route_fig = figure('DefaultAxesFontSize', 14, 'Position', [10 10 500 1000]); 
-% geoscatter(lat_all, lon_all, 'Marker', '.')
-% geobasemap 'none'
+x = [];
+y = [];
+
+for line = 1:1:m(1)
+
+    % If line contains x
+    if contains(routingmap_2(line,1), 'x:')
+        
+        x = [x; str2double(routingmap_2(line,2))];
+        
+    elseif contains(routingmap_2(line,1), 'y:') % If line contains y
+        
+        y = [y; str2double(routingmap_2(line,2))];
+        
+    elseif contains(routingmap_2(line,1), 'start_position')
+        
+        line = line + 3;
+    
+    elseif contains(routingmap_2(line,1), 'node') % If line contains node
+        
+        segment_xy_2{lane_count_2} = [x y];
+        
+        [lat_2,lon_2] = projinv(proj, x, y);
+        
+        segment_latlon_2{lane_count_2} = [lat_2,lon_2];
+    
+        lane_count_2 = lane_count_2 + 1;
+        
+        x = [];
+        y = [];
+        
+    end
+    
+end
 
 %% Plots all segments as lines
 
-% route_line_fig3 = figure('DefaultAxesFontSize', 14, 'Position', [10 10 500 1000]); 
+route_line_fig3 = figure('DefaultAxesFontSize', 14, 'Position', [10 10 500 1000]); 
 
 hold all
 
@@ -101,9 +116,16 @@ for seg_idx = 2:1:length(segment_latlon)
     
 end
 
+hold on
+hold all
+
+for seg_idx = 2:1:length(segment_latlon_2)
+
+    plot(segment_latlon_2{seg_idx}(1:end-1,1), segment_latlon_2{seg_idx}(1:end-1,2), 'b')
+    
+end
+
 axis equal
-
-
 
 %% Save data
 % 
@@ -144,8 +166,8 @@ axis equal
 % 
 % 
 % 
-% 
-% 
+
+
 
 
 
