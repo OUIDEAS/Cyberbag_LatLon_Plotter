@@ -14,4 +14,8 @@ route\_map\_txt\_read.m allows the user to import the routing_map.txt file that 
 
 route\_vs\_drive.m allows the user to plot the csv results from create\_gps\_map.m and route\_map\_txt\_read.m for comparison purposes.
 
+routing\_map\_comp.m compares two routing maps
+
+routing\_map\_sim\_map\_overlay.m overlays the routing map and the sim map
+
 ![example_image](https://user-images.githubusercontent.com/64620392/210857412-ab001eb4-3da5-48ce-9fce-a36edd80ff9b.png)
