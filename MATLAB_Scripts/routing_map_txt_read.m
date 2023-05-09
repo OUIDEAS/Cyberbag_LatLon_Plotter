@@ -12,7 +12,7 @@ save_data = 0;
 save_png = 0;
 save_fig = 0;
 
-export_dir = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Route_Export_Results/ohio_ridges_v2';
+export_dir = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Route_Export_Results/ohio_athens_blue_v1_export';
 
 mkdir(export_dir)
 addpath(export_dir)
@@ -36,7 +36,7 @@ proj = projcrs(3724);
 [~,export_name,~] = fileparts(export_dir);
 
 %% Opening file and importing into workspace
-import_route = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_ridges_v1/routing_map.txt';
+import_route = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_athens_blue_v1/routing_map.txt';
 
 routingmap = import_routing_map_txt(import_route);
 
@@ -76,68 +76,72 @@ for line = 1:1:n(1)
     
 end
 
-%% Plots all segments
-% 
-% for seg_idx = 2:1:length(segment_latlon)
-% 
-%     lat_all = [lat_all; segment_latlon{seg_idx}(:,1)];
-%     lon_all = [lon_all; segment_latlon{seg_idx}(:,2)];
-%     
-% end
-% 
-% route_fig = figure('DefaultAxesFontSize', 14, 'Position', [10 10 500 1000]); 
-% geoscatter(lat_all, lon_all, 'Marker', '.')
-% geobasemap 'none'
+%% Scatter Plots all segments
+
+for seg_idx = 2:1:length(segment_latlon)
+
+    lat_all = [lat_all; segment_latlon{seg_idx}(:,1)];
+    lon_all = [lon_all; segment_latlon{seg_idx}(:,2)];
+    
+end
+
+route_fig = figure('DefaultAxesFontSize', 24, 'Position', [10 10 500 1200]); 
+geoscatter(lat_all, lon_all, 'Marker', '.', 'LineWidth', 50)
+geobasemap 'none'
+
 
 %% Plots all segments as lines
 
-% route_line_fig3 = figure('DefaultAxesFontSize', 14, 'Position', [10 10 500 1000]); 
+route_line_fig3 = figure('DefaultAxesFontSize', 14, 'Position', [10 10 1200 600]); 
 
 hold all
 
 for seg_idx = 2:1:length(segment_latlon)
 
-    plot(segment_latlon{seg_idx}(1:end-1,1), segment_latlon{seg_idx}(1:end-1,2), 'r')
+    plot(segment_latlon{seg_idx}(1:end-1,2), segment_latlon{seg_idx}(1:end-1,1), 'r', 'LineWidth', 3)
     
 end
 
 axis equal
 
+legend("Routing Map")
+grid on
+xlabel("Longitude")
+ylabel("Latitude")
 
 
 %% Save data
-% 
-% if save_data
-%     
-%     lat_lon_data = [lat_all lon_all];
-% 
-%     route_data_filename = '/' + string(export_name) + '_lat_lon.csv';
-% 
-%     full_export_name = string(export_dir) + string(route_data_filename);
-% 
-%     writematrix(lat_lon_data, full_export_name)
-%     
-%     
-%     
-% end
-% 
-% save(full_export_name + ".mat" , segment_latlon)
+
+if save_data
+    
+    lat_lon_data = table(lat_all, lon_all, 'VariableNames', ["Latitude", "Longitude"]);
+
+    route_data_filename = '/' + string(export_name) + '_lat_lon.csv';
+
+    full_export_name = string(export_dir) + string(route_data_filename);
+
+    writetable(lat_lon_data, full_export_name)
+    
+    save(string(full_export_name + ".mat") , 'segment_latlon')
+    
+end
+
 
 %% Save Figure
 % 
-% if save_png
-%     
-%     disp('Re-size figures as needed then unpause')
-%     
-%     pause
-%     
-%     fig_filename = '/' + string(export_name) + '_png.png';
-% 
-%     full_fig_export_name = string(export_dir) + string(fig_filename);
-%     
-%     saveas(route_fig, string(full_fig_export_name), 'png');
-%     
-% end
+if save_png
+    
+    disp('Re-size figures as needed then unpause')
+    
+    pause
+    
+    fig_filename = '/' + string(export_name) + '_png.png';
+
+    full_fig_export_name = string(export_dir) + string(fig_filename);
+    
+    saveas(route_fig, string(full_fig_export_name), 'png');
+    
+end
 % 
 % % proj: "+proj=utm +zone=17 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 % 

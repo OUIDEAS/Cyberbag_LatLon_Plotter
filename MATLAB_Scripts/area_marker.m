@@ -81,7 +81,7 @@ while true
                     % Plot the shape unto the point cloud for easy
                     % identification
                     roi_data = [xy_roi(:,1),xy_roi(:,2); xy_roi(1:2,1),xy_roi(1:2,2)];
-                    geoplot(roi_data(:,1), roi_data(:,2), 'r', 'LineWidth', 10)
+                    plot(roi_data(:,1), roi_data(:,2), 'r', 'LineWidth', 10)
 
                 case 2
 
@@ -96,7 +96,7 @@ while true
                     % Plot the shape unto the point cloud for easy
                     % identification
                     roi_data = [xy_roi(:,1),xy_roi(:,2); xy_roi(1:2,1),xy_roi(1:2,2)];
-                    geoplot(roi_data(:,1), roi_data(:,2), 'y', 'LineWidth', 10)
+                    plot(roi_data(:,1), roi_data(:,2), 'y', 'LineWidth', 10)
 
                 case 3
 
@@ -111,7 +111,7 @@ while true
                     % Plot the shape unto the point cloud for easy
                     % identification
                     roi_data = [xy_roi(:,1),xy_roi(:,2); xy_roi(1:2,1),xy_roi(1:2,2)];
-                    geoplot(roi_data(:,1), roi_data(:,2), 'g', 'LineWidth', 10)
+                    plot(roi_data(:,1), roi_data(:,2), 'g', 'LineWidth', 10)
 
                 case 4
 
@@ -126,7 +126,7 @@ while true
                     % Plot the shape unto the point cloud for easy
                     % identification
                     roi_data = [xy_roi(:,1),xy_roi(:,2); xy_roi(1:2,1),xy_roi(1:2,2)];
-                    geoplot(roi_data(:,1), roi_data(:,2), 'm', 'LineWidth', 10)
+                    plot(roi_data(:,1), roi_data(:,2), 'm', 'LineWidth', 10)
 
             end % Plot Roi case
 

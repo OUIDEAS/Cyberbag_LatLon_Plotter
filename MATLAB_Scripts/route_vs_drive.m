@@ -28,17 +28,42 @@ lon_van         = table2array(van_gps(:,10));
 alt_van         = table2array(van_gps(:,11));
 sat_van         = table2array(van_gps(:,20));
 
+% lat_van         = table2array(van_gps(:,3));
+% lon_van         = table2array(van_gps(:,4));
+% alt_van         = table2array(van_gps(:,5));
+% sat_van         = table2array(van_gps(:,13));
+
+%% Import OTHER Van GPS
+
+% [import_vangps2_name, import_vangps2_path]       = uigetfile('*.csv','Grab Route Data');
+% 
+% import_file2     = string(import_vangps2_path) + string(import_vangps2_name);
+% 
+% van2_gps         = readtable(import_file2);
+% 
+% % lat_van2         = table2array(van2_gps(:,9));
+% % lon_van2         = table2array(van2_gps(:,10));
+% % alt_van2         = table2array(van2_gps(:,11));
+% % sat_van2         = table2array(van2_gps(:,20));
+% 
+% lat_van2         = table2array(van2_gps(:,3));
+% lon_van2         = table2array(van2_gps(:,4));
+% alt_van2         = table2array(van2_gps(:,5));
+% sat_van2         = table2array(van2_gps(:,13));
+
+
 %% Plot Results
 
 route_fig = figure('DefaultAxesFontSize', 14); 
 geoscatter(lat_route, lon_route, 'Marker', '.', 'MarkerEdgeColor', 'k')
 hold on
-% geoscatter(lat_van, lon_van, 'Marker', 'x', 'MarkerFaceColor','b')
-geoplot(lat_van, lon_van, 'b', 'LineWidth', 3)
-hold off
+geoscatter(lat_van, lon_van, 'Marker', 'x', 'MarkerFaceColor','b')
+% geoscatter(lat_van2, lon_van2, 'Marker', 'x', 'MarkerFaceColor','r')
+% geoplot(lat_van, lon_van, 'b', 'LineWidth', 3)
+% hold off
 geobasemap 'none'
 
-legend({'Route', 'Van'}, 'FontSize', 14)
+legend({'Route', 'Pacifica'}, 'FontSize', 14)
 
 %% Plot Results with Satellites
 
