@@ -37,14 +37,10 @@ disp('==================================================================')
 % velodyne_single_pcd_export_bool                 = 0; % Complete
 
 disp('Select Topic to Export')
-dlg_list                            = {'Novatel_Bool', 'GPS', 'GPS_IMU', 'Left_Camera', 'Right_Camera', 'PCD_Export'};
+dlg_list                            = {'Novatel_Bool', 'GPS', 'GPS_IMU', 'Left_Camera', 'Right_Camera', 'Velodyne', 'OS1'};
 [indx_dlg_list,~]                   = listdlg('ListString', dlg_list,'SelectionMode','single');
-    
+disp('Topic selected, Initilizing Rosbag...')
 topic = cell2mat(dlg_list(indx_dlg_list));
-
-
-%% Ask user if compare to route file
-
 
 %% INITIALIZING ROSBAG
 %Timing
@@ -109,7 +105,7 @@ end
 
 %% VELODYNE PCD EXPORT
 
-if topic == "PCD_Export"
+if topic == "Velodyne"
     
     disp('VELODYNE PCD EXPORT')
     
@@ -133,6 +129,36 @@ if topic == "PCD_Export"
     
 end
 
+%% OS1 PCD EXPORT
+
+if topic == "OS1"
+    
+    disp('OS1 VIDEO EXPORT')
+    
+%     warning('CURRENTLY REQUIRES STACK OF PCDS!')
+%     
+%     line1 = "PROCEDURE FOR PCD EXPORT:";
+%     line2 = "Terminal 1:";
+%     line3 = "roslaunch ouster_ros replay.launch bag_file:=/media/autobuntu/chonk/chonk/DATA/chonk_ROSBAG/ouster_test/2023-05-24-16-31-32.bag";
+%     line4 = "Terminal 2:";
+%     line5 = "rosrun pcl_ros pointcloud_to_pcd input:=/ouster/points output_format:=binary";
+%     
+%     fprintf('\n%s\n%s\n%s\n%s\n%s\n', line1, line2, line3 ,line4 , line5)
+    
+    % /ouster/imu
+    % /ouster/imu_packets
+    % /ouster/lidar_packets
+    % /ouster/metadata
+    % /ouster/nearir_image
+    % /ouster/os_nodelet_mgr/bond
+    % /ouster/points
+    % /ouster/range_image
+    % /ouster/reflec_image
+    % /ouster/signal_image
+    
+    sensor_van_ouster_export(bag_init, bag_file)
+    
+end
 
 %% LEFT CAMERA
 

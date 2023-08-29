@@ -8,11 +8,11 @@ clc
 
 %% Options
 
-save_data = 0;
-save_png = 0;
-save_fig = 0;
+save_data = 1;
+save_png = 1;
+save_fig = 1;
 
-export_dir = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Route_Export_Results/ohio_athens_blue_v1_export';
+export_dir = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Route_Export_Results/ohio_athens_blue_v2b_export';
 
 mkdir(export_dir)
 addpath(export_dir)
@@ -36,7 +36,7 @@ proj = projcrs(3724);
 [~,export_name,~] = fileparts(export_dir);
 
 %% Opening file and importing into workspace
-import_route = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_athens_blue_v1/routing_map.txt';
+import_route = '/media/autobuntu/chonk/chonk/git_repos/Van_Apollo_GPS_Handler/MATLAB_Scripts/Raw_Routes/ohio_athens_blue_v2b/routing_map.txt';
 
 routingmap = import_routing_map_txt(import_route);
 

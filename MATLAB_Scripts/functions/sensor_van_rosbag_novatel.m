@@ -63,11 +63,11 @@ function novatel_return = sensor_van_rosbag_novatel(bag_init, bag_file, novatel_
     %% Export the stuff to csv
     if novatel_csv_export_bool
         
-        novatel_bestpos_csv(novatel_bestpos_struct, bag_file)
-%         novatel_corrimu_csv(novatel_corrimu_struct,bag_file)
-%         novatel_inspva_csv(novatel_driver_bond_struct,bag_file)
-%         novatel_oem7raw_csv(novatel_oem7raw_struct, bag_file)
-%         novatel_inspva_csv(novatel_inspva_struct, bag_file)
+        novatel_bestpos_csv(novatel_bestpos_struct, bag_file);
+%         novatel_corrimu_csv(novatel_corrimu_struct,bag_file);
+%         novatel_inspva_csv(novatel_driver_bond_struct,bag_file);
+%         novatel_oem7raw_csv(novatel_oem7raw_struct, bag_file);
+%         novatel_inspva_csv(novatel_inspva_struct, bag_file);
         % To-Do: Rest of topics.........
         
         disp('novatel csv complete')

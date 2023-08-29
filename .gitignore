@@ -11,6 +11,8 @@ MATLAB_Scripts/03_06_2023_ROSBAGS
 *.png
 *.zip
 *.csv
+*.avi
+*.mp4
 /Delete
 /MATLAB_Scripts/Delete
 *.bag
